@@ -1,0 +1,9 @@
+flowchart TD
+    R[Requested relative path] --> M{Isolation mode}
+    M -->|agent| A[Agent workspace]
+    M -->|session| S[Session workspace]
+    A --> N[Normalize path]
+    S --> N[Normalize path]
+    N --> V{Inside workspace root?}
+    V -->|yes| O[Read or write file]
+    V -->|no| X[Reject request]

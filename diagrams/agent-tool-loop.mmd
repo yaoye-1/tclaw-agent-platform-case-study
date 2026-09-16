@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant U as User
+    participant WS as WebSocket API
+    participant C as Context Builder
+    participant L as LLM Adapter
+    participant T as Tool Executor
+
+    U->>WS: Send message with JWT
+    WS->>C: Build static and dynamic context
+    C-->>WS: System and user context
+    WS->>L: Stream model request
+    L-->>WS: Text chunk or tool call
+    WS-->>U: Stream status
+    WS->>T: Execute requested tool
+    T-->>WS: Structured result
+    WS->>L: Append tool result
+    L-->>WS: Final answer
+    WS-->>U: Complete response

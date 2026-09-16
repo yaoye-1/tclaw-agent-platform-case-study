@@ -1,0 +1,17 @@
+sequenceDiagram
+    actor U as User
+    participant P as Platform
+    participant I as Enterprise IdP
+
+    U->>P: Start login
+    P->>P: Generate state, nonce and PKCE verifier
+    P->>I: Authorization request with challenge
+    I-->>P: Callback with code and state
+    P->>P: Validate state
+    P->>I: Exchange code and verifier
+    I-->>P: ID token and access token
+    P->>P: Verify signature and claims
+    P->>I: Fetch UserInfo
+    I-->>P: Profile
+    P->>P: Resolve tenant and identity binding
+    P-->>U: Issue platform JWT
