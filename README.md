@@ -1,3 +1,4 @@
+> Documentation only. Source code is proprietary to the employer; a private code walkthrough is available on request.
 # TClaw Agent Platform Case Study
 
 > A sanitized engineering case study of an enterprise multi-agent platform built as a secondary development on top of the open-source Clawith project.
